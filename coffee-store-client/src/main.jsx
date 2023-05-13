@@ -1,16 +1,17 @@
 // import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import AddCoffee from './Component/AddCoffee.jsx';
-import UpdateCoffee from './Component/UpdateCoffee.jsx';
+import AddCoffee from "./Component/AddCoffee.jsx";
+import UpdateCoffee from "./Component/UpdateCoffee.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    loader: () => fetch("http://localhost:5000/coffee"),
+    loader: () =>
+      fetch("https://coffee-store-server-tzhasan.vercel.app/coffee"),
   },
   {
     path: "addCoffee",
@@ -19,7 +20,10 @@ const router = createBrowserRouter([
   {
     path: "updateCoffee/:id",
     element: <UpdateCoffee></UpdateCoffee>,
-    loader: ({ params }) => fetch(`http://localhost:5000/coffee/${params.id}`),
+    loader: ({ params }) =>
+      fetch(
+        `https://coffee-store-server-tzhasan.vercel.app/coffee/${params.id}`
+      ),
   },
 ]);
 

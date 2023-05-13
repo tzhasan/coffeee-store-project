@@ -4,8 +4,9 @@ import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const UpdateCoffee = () => {
-  const coffee = useLoaderData()
-  const { _id, name, quantity, supplier, taste, category, details, photoUrl } = coffee
+  const coffee = useLoaderData();
+  const { _id, name, quantity, supplier, taste, category, details, photoUrl } =
+    coffee;
   const handleUpdate = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -27,7 +28,7 @@ const UpdateCoffee = () => {
     };
     console.log(UpdatedCoffee);
     // send to server
-    fetch(`http://localhost:5000/coffee/${_id}`, {
+    fetch(`https://coffee-store-server-tzhasan.vercel.app/coffee/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -45,11 +46,11 @@ const UpdateCoffee = () => {
             confirmButtonText: "Cool",
           });
         }
-      })
-  }
+      });
+  };
   return (
     <div className="p-10 bg-gray-400 h-[100vh]">
-      <h2 className="text-2xl font-bold mb-4">Update Coffee: { name}</h2>
+      <h2 className="text-2xl font-bold mb-4">Update Coffee: {name}</h2>
       <Link to={"/"} className="btn m-2">
         {" "}
         <button>GO home</button>
@@ -152,7 +153,11 @@ const UpdateCoffee = () => {
           </div>
         </div>
         {/* submit */}
-        <input type="submit" value={"Update Coffee details"} className="btn btn-block" />
+        <input
+          type="submit"
+          value={"Update Coffee details"}
+          className="btn btn-block"
+        />
       </form>
     </div>
   );

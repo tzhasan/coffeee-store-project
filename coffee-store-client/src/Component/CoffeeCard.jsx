@@ -16,7 +16,7 @@ const CoffeeCard = ({ coffee, coffes, setCoffees }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/coffee/${_id}`, {
+        fetch(`https://coffee-store-server-tzhasan.vercel.app/coffee/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -24,8 +24,8 @@ const CoffeeCard = ({ coffee, coffes, setCoffees }) => {
             if (data.deletedCount > 0) {
               Swal.fire("Deleted!", "Your Coffee has been deleted.", "success");
             }
-            const remainingCoffees = coffes.filter(cof => cof._id !== _id)
-            setCoffees(remainingCoffees)
+            const remainingCoffees = coffes.filter((cof) => cof._id !== _id);
+            setCoffees(remainingCoffees);
           });
       }
     });
